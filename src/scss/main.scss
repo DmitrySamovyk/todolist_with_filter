@@ -1,0 +1,277 @@
+html {
+  width: 100%;
+}
+
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: calc(100% - 30px);
+  height: 100%;
+  padding: 15px;
+}
+
+.add-form-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding: 15px;
+  background-color: #ccc;
+  width: calc(30% - 30px);
+  margin-bottom: 15px;
+  label {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  button {
+    width: 50%;
+    padding: 5px 10px;
+  }
+  input {
+    width: calc(100% - 24px);
+    padding: 5px 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.filter-todos-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filter {
+  width: 200px;
+  background-color: #ccc;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 15px;
+  flex-shrink: 0;
+
+  label {
+    margin-bottom: 10px;
+  }
+  input {
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    width: calc(100% - 30px);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.todos {
+  width: calc(100% - 230px);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .empty-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.todo-single {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  min-height: 115px;
+  width: calc(33.33333% - 45px);
+  padding: 15px;
+  background-color: #ccc;
+  margin: 0 0 15px 15px;
+  .created {
+    font-size: 10px;
+    color: #333;
+    margin-bottom: 0;
+  }
+  .remove {
+    position: absolute;
+    cursor: pointer;
+    right: 2px;
+    top: 2px;
+    width: 14px;
+    height: 14px;
+    opacity: .3;
+    &:hover {
+      opacity: 1;
+    }
+    &:before,
+    &:after {
+      position: absolute;
+      left: 6px;
+      content: ' ';
+      height: 14px;
+      width: 1px;
+      background-color: #333;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+  input {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+  }
+  button {
+    margin-top: 10px;
+  }
+}
+
+.pagination-container {
+  width: calc(100% - 30px);
+  padding: 15px;
+  .pagination {
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: center;
+  }
+  .pagination-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  .pagination-list-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #ccc;
+    margin-right: 5px;
+    height: 20px;
+    line-height: 20px;
+    &.active {
+      cursor: default;
+      background-color: #333;
+    }
+    &:only-child,
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .pagination-button {
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: #ccc;
+    margin: 0;
+    padding: 0;
+    &:before {
+      content:'';
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+      border-top-color: white;
+      display: inline-block;
+      -webkit-transform: translate(-15px, -20px);
+    }
+    &.prev {
+      transform: rotate(90deg) translate(0px, 25px);
+      -webkit-transform: rotate(90deg) translate(0px, 25px);
+      -moz-transform: rotate(90deg) translate(0px, 25px);
+      -o-transform: rotate(90deg) translate(0px, 25px);
+      -ms-transform: rotate(90deg) translate(0px, 25px);
+    }
+    &.next {
+      transform: rotate(270deg) translate(0px, 25px);
+      -webkit-transform: rotate(270deg) translate(0px, 25px);
+      -moz-transform: rotate(270deg) translate(0px, 25px);
+      -o-transform: rotate(270deg) translate(0px, 25px);
+      -ms-transform: rotate(270deg) translate(0px, 25px);
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .todo-single {
+    width: calc(50% - 45px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .add-form-wrap {
+    width: calc(100% - 30px);
+    flex-flow: row wrap;
+    label {
+      width: 100px;
+      height: 27px;
+      line-height: 27px;
+      margin-bottom: 0;
+    }
+    button {
+      width: 200px;
+    }
+    input {
+      width: calc(100% - 124px);
+    }
+    h1 {
+      width: 100%;
+    }
+  }
+  .filter-todos-wrap {
+    flex-flow: column nowrap;
+    .filter {
+      width: calc(100% - 30px);
+      margin-bottom: 15px;
+      flex-flow: row wrap;
+      .clear-wrap {
+        width: 100%;
+        button {
+          width: 100px;
+        }
+      }
+      h1 {
+        width: 100%;
+      }
+      label {
+        width: 100px;
+        height: 27px;
+        line-height: 27px;
+      }
+      input {
+        width: calc(100% - 124px);
+        &.form-control {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .todos {
+    width: 100%;
+    justify-content: space-between;
+    .todo-single {
+      margin-left: 0;
+      width: calc(50% - 42.5px);
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
